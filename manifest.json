@@ -1,0 +1,10 @@
+{
+  "id": "journal-to-daily-note",
+  "name": "Journal to Daily Note",
+  "version": "1.0.0",
+  "minAppVersion": "1.11.0",
+  "description": "Add entries quickly to your daily note from any file.",
+  "author": "defcube",
+  "authorUrl": "https://github.com/defcube/obsidian-journal-to-daily-note",
+  "isDesktopOnly": false
+}

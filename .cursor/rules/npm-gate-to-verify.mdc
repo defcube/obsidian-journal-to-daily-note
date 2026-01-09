@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+---
+
+You MUST run `npm run gate` before telling the user you are complete.  You must fix all warnings and errors.

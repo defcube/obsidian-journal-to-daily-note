@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Source local configuration if it exists
+if [ -f "dev.config.sh" ]; then
+    source "dev.config.sh"
+fi
+
+# Check if VAULT_PLUGIN_DIR is set
+if [ -z "$VAULT_PLUGIN_DIR" ]; then
+    echo "Error: VAULT_PLUGIN_DIR is not set."
+    echo "Please create a 'dev.config.sh' file (copy 'dev.config.example.sh') and set your vault path:"
+    echo "export VAULT_PLUGIN_DIR=\"\$HOME/Obsidian/My Vault/.obsidian/plugins/journal-to-daily-note\""
+    exit 1
+fi
+
+if [ ! -d "$VAULT_PLUGIN_DIR" ]; then
+    echo "Creating plugin directory: $VAULT_PLUGIN_DIR"
+    mkdir -p "$VAULT_PLUGIN_DIR"
+fi
+
+echo "Building plugin..."
+npm run build
+
+echo "Copying files to vault..."
+cp main.js manifest.json "$VAULT_PLUGIN_DIR/"
+if [ -f styles.css ]; then
+    cp styles.css "$VAULT_PLUGIN_DIR/"
+fi
+
+echo "Done!"

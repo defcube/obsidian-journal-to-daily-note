@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+*.js.map
+main.js
+dist/
+
+# OS files
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Data files
+data.json
+
+# Local development config
+dev.config.sh
