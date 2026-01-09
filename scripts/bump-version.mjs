@@ -4,7 +4,9 @@ import { join } from "path";
 const targetVersion = process.env.npm_package_version;
 
 if (!targetVersion) {
-  console.error("Error: This script is meant to be run via 'npm version <newversion>'.");
+  console.error(
+    "Error: This script is meant to be run via 'npm version <newversion>'.",
+  );
   process.exit(1);
 }
 
@@ -25,4 +27,6 @@ try {
 versions[targetVersion] = manifest.minAppVersion;
 writeFileSync(versionsPath, JSON.stringify(versions, null, 2) + "\n");
 
-console.log(`Updated manifest.json and versions.json to version ${targetVersion}`);
+console.log(
+  `Updated manifest.json and versions.json to version ${targetVersion}`,
+);
