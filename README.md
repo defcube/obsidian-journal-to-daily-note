@@ -2,6 +2,10 @@
 
 Add entries quickly to your daily note from any file.
 
+![Journal Input Modal](demo-1.gif)
+![Journal Entry on Daily Note](demo-2.gif)
+
+
 ## Features
 
 - Quick entry modal to add thoughts to your daily note without leaving your current context
