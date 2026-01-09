@@ -11,7 +11,8 @@
     "lint:dead": "knip --no-progress",
     "test": "jest",
     "format": "prettier --write . --log-level=error",
-    "gate": "npm run format && npm run lint:fix && npm run lint:dead && npm run build && npm run test"
+    "gate": "npm run format && npm run lint:fix && npm run lint:dead && npm run build && npm run test",
+    "version": "node scripts/bump-version.mjs && git add manifest.json versions.json"
   },
   "keywords": [],
   "author": "",
