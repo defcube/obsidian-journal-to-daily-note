@@ -2,8 +2,11 @@
 
 Add entries quickly to your daily note from any file.
 
-![Journal Input Modal](demo-1.gif)
-![Journal Entry on Daily Note](demo-2.gif)
+The input:
+<img src="demo-1.gif" alt="Journal Input Modal" width="200" />
+
+The journal entry in the daily note:
+<img src="demo-2.gif" alt="Journal Entry on Daily Note" width="200" />
 
 
 ## Features
