@@ -14,7 +14,7 @@ export class EntryModalView extends Modal {
   constructor(
     app: App,
     private defaultEntryText: string,
-    private onSubmit: (result: EntryResult) => void,
+    private onSubmit: (result: EntryResult) => void | Promise<void>,
   ) {
     super(app);
     const m = window.moment || moment;
@@ -98,7 +98,7 @@ export class EntryModalView extends Modal {
       this.entry = this.defaultEntryText;
     }
     this.close();
-    this.onSubmit({ entry: this.entry, timestamp: this.timestamp });
+    void this.onSubmit({ entry: this.entry, timestamp: this.timestamp });
   }
 
   onClose(): void {

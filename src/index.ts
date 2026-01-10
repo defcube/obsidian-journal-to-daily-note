@@ -23,9 +23,10 @@ export default class DefJournalPlugin extends Plugin {
 
   async onload(): Promise<void> {
     // Load settings
-    const savedData = await this.loadData();
+    const savedData =
+      (await this.loadData()) as Partial<DefJournalSettings> | null;
     this.settingsModel = new SettingsModel(
-      { ...DEFAULT_SETTINGS, ...savedData },
+      Object.assign({}, DEFAULT_SETTINGS, savedData),
       async (settings: DefJournalSettings) => {
         await this.saveData(settings);
       },

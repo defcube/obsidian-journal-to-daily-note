@@ -21,7 +21,7 @@ const versionsPath = join(process.cwd(), "versions.json");
 let versions = {};
 try {
   versions = JSON.parse(readFileSync(versionsPath, "utf8"));
-} catch (e) {
+} catch {
   // File might not exist yet or be empty
 }
 versions[targetVersion] = manifest.minAppVersion;
