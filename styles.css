@@ -1,0 +1,45 @@
+/* EntryModalView styles */
+.journal-modal-mobile {
+  margin-bottom: auto;
+  margin-top: 25vh;
+}
+
+.journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.journal-time-input {
+  text-align: center;
+}
+
+.journal-main-input {
+  width: 100%;
+  font-size: 1.1em;
+  padding: 8px;
+}
+
+.journal-footer-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+/* TagSuggesterView styles */
+.tag-suggester-container {
+  position: absolute;
+  z-index: 9999;
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  box-shadow: var(--shadow-s);
+}
+
+.tag-suggester-container.is-visible {
+  display: block;
+}

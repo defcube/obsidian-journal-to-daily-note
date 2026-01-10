@@ -25,16 +25,11 @@ export class EntryModalView extends Modal {
     const { contentEl } = this;
 
     if (Platform.isMobile) {
-      this.modalEl.style.marginBottom = "auto";
-      this.modalEl.style.marginTop = "25vh";
+      this.modalEl.addClass("journal-modal-mobile");
     }
 
     // Header Row
-    const headerDiv = contentEl.createDiv();
-    headerDiv.style.display = "flex";
-    headerDiv.style.justifyContent = "space-between";
-    headerDiv.style.alignItems = "center";
-    headerDiv.style.marginBottom = "20px";
+    const headerDiv = contentEl.createDiv("journal-header");
 
     headerDiv.createEl("h2", { text: "Journal entry" });
 
@@ -46,9 +41,10 @@ export class EntryModalView extends Modal {
     });
     timeInput.addClass("journal-time-input");
     // Native time input needs more width than text input
-    timeInput.style.textAlign = "center";
     timeInput.addEventListener("input", (e) => {
-      this.timestamp = (e.target as HTMLInputElement).value;
+      if (e.target instanceof HTMLInputElement) {
+        this.timestamp = e.target.value;
+      }
     });
     timeInput.addEventListener("keydown", (e: KeyboardEvent) => {
       if (e.key === "Enter") {
@@ -67,9 +63,6 @@ export class EntryModalView extends Modal {
       placeholder: "Type your entry...",
     });
     this.inputEl.addClass("journal-main-input");
-    this.inputEl.style.width = "100%";
-    this.inputEl.style.fontSize = "1.1em";
-    this.inputEl.style.padding = "8px";
 
     // Tag Suggester
     this.suggester = new TagSuggesterView(this.app, this.inputEl);
@@ -85,11 +78,7 @@ export class EntryModalView extends Modal {
     setTimeout(() => this.inputEl?.focus(), 10);
 
     // Footer Buttons
-    const buttonContainer = contentEl.createDiv();
-    buttonContainer.style.display = "flex";
-    buttonContainer.style.justifyContent = "flex-end";
-    buttonContainer.style.marginTop = "20px";
-    buttonContainer.style.gap = "10px";
+    const buttonContainer = contentEl.createDiv("journal-footer-buttons");
 
     const cancelButton = buttonContainer.createEl("button", { text: "Cancel" });
     cancelButton.addEventListener("click", () => {

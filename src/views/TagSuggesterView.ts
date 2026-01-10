@@ -1,4 +1,5 @@
 import { App } from "obsidian";
+import { setCssProps } from "../utils";
 
 /**
  * A lightweight suggester for hashtags in a standard input.
@@ -16,10 +17,7 @@ export class TagSuggesterView {
     private app: App,
     private inputEl: HTMLInputElement,
   ) {
-    this.containerEl = document.body.createDiv("suggestion-container");
-    this.containerEl.style.position = "absolute";
-    this.containerEl.style.zIndex = "9999";
-    this.containerEl.style.display = "none";
+    this.containerEl = document.body.createDiv("tag-suggester-container");
     this.containerEl.addClass("popover");
     this.containerEl.addClass("suggestion-item-group");
 
@@ -82,18 +80,14 @@ export class TagSuggesterView {
     this.selectedIndex = 0;
 
     this.containerEl.empty();
-    this.containerEl.style.display = "block";
+    this.containerEl.addClass("is-visible");
 
     const rect = this.inputEl.getBoundingClientRect();
-    this.containerEl.style.top = rect.bottom + 5 + "px";
-    this.containerEl.style.left = rect.left + "px";
-    this.containerEl.style.width = rect.width + "px";
-    this.containerEl.style.maxHeight = "200px";
-    this.containerEl.style.overflowY = "auto";
-    this.containerEl.style.backgroundColor = "var(--background-secondary)";
-    this.containerEl.style.border =
-      "1px solid var(--background-modifier-border)";
-    this.containerEl.style.boxShadow = "var(--shadow-s)";
+    setCssProps(this.containerEl, {
+      top: rect.bottom + 5 + "px",
+      left: rect.left + "px",
+      width: rect.width + "px",
+    });
 
     items.forEach((item, index) => {
       const el = this.containerEl.createDiv("suggestion-item");
@@ -116,7 +110,7 @@ export class TagSuggesterView {
   }
 
   private close(): void {
-    this.containerEl.style.display = "none";
+    this.containerEl.removeClass("is-visible");
     this.suggestions = [];
   }
 

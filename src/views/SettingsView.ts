@@ -23,11 +23,9 @@ export class SettingsView extends PluginSettingTab {
         'Text to use when submitting an empty entry. Defaults to "✅" if not specified.',
       )
       .addText((text) =>
-        text
-          .setValue(this.settingsModel.defaultEntryText)
-          .onChange(async (value) => {
-            await this.settingsModel.setDefaultEntryText(value);
-          }),
+        text.setValue(this.settingsModel.defaultEntryText).onChange((value) => {
+          this.settingsModel.setDefaultEntryText(value);
+        }),
       );
   }
 }
