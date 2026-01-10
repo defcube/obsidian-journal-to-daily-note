@@ -1,5 +1,9 @@
-import { App } from "obsidian";
+import { App, MetadataCache } from "obsidian";
 import { setCssProps } from "../utils";
+
+interface MetadataCacheWithTags extends MetadataCache {
+  getTags(): Record<string, number> | null;
+}
 
 /**
  * A lightweight suggester for hashtags in a standard input.
@@ -38,9 +42,12 @@ export class TagSuggesterView {
     }
 
     const { word, range } = cursorValues;
-    const allTags = Object.keys(this.app.metadataCache.getTags()).map((t) =>
-      t.slice(1),
-    );
+    const tags = (this.app.metadataCache as MetadataCacheWithTags).getTags();
+    if (!tags) {
+      this.close();
+      return;
+    }
+    const allTags = Object.keys(tags).map((t) => t.slice(1));
     const matches = allTags.filter((tag) =>
       tag.toLowerCase().startsWith(word.toLowerCase()),
     );
