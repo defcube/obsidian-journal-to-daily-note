@@ -1,11 +1,8 @@
 export function setCssProps(
   element: HTMLElement,
-  props: Partial<CSSStyleDeclaration>,
+  props: Record<string, string>,
 ): void {
   for (const [key, value] of Object.entries(props)) {
-    if (value !== undefined && value !== null) {
-      // @ts-ignore - Dynamic access to style properties
-      element.style[key] = value;
-    }
+    element.style.setProperty(key, value);
   }
 }
