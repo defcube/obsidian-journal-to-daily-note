@@ -1,6 +1,6 @@
 {
   "name": "obsidian-journal-to-daily-note",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Add entries quickly to your daily note from any file.",
   "main": "main.js",
   "scripts": {
